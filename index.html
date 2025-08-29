@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>포트폴리오 | Your Name</title>
+  <meta name="description" content="Your Name의 개인 포트폴리오. 프로젝트, 기술 스택, 이력서 및 문의." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%F0%9F%8C%9F%3C/text%3E%3C/svg%3E" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
+  <link rel="canonical" href="https://username.github.io/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Your Name Portfolio" />
+  <meta property="og:title" content="Your Name | Portfolio" />
+  <meta property="og:description" content="프로젝트, 기술, 경력, 문의까지 한 곳에." />
+  <meta property="og:url" content="https://username.github.io/" />
+  <meta property="og:image" content="https://username.github.io/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <style>
+    :root{
+      --bg: #ffffff;
+      --text: #0b1220;
+      --muted: #f3f4f6;
+      --card: #ffffff;
+      --border: #e5e7eb;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --accent: #10b981;
+      --shadow: 0 10px 25px rgba(2,6,23,0.06);
+      --radius: 14px;
+    }
+    [data-theme="dark"]{
+      --bg: #0b1220;
+      --text: #e5e7eb;
+      --muted: #101827;
+      --card: #0f172a;
+      --border: #1f2937;
+      --primary: #60a5fa;
+      --primary-hover: #93c5fd;
+      --accent: #34d399;
+      --shadow: 0 10px 25px rgba(0,0,0,0.45);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; background:var(--bg); color:var(--text);}
+    a{color:var(--primary);text-decoration:none}
+    a:hover{text-decoration:underline}
+    img{max-width:100%;display:block}
+    .container{max-width:1080px;margin:0 auto;padding:24px}
+    .btn{display:inline-block;background:var(--primary);color:#fff;border-radius:999px;padding:12px 18px;font-weight:600;transition:transform .1s ease, background .2s ease}
+    .btn:hover{background:var(--primary-hover);transform:translateY(-1px)}
+    .btn.ghost{background:transparent;border:1px solid var(--border);color:var(--text)}
+    .chip{padding:6px 10px;border:1px solid var(--border);border-radius:999px;background:var(--card);font-size:14px}
+    .chip.active{background:var(--primary);color:#fff;border-color:transparent}
+    header.site{position:sticky;top:0;z-index:50;background:color-mix(in lab, var(--bg), transparent 6%);backdrop-filter:saturate(120%) blur(10px); border-bottom:1px solid var(--border)}
+    header .inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    nav a{padding:10px 12px;border-radius:10px}
+    nav a:focus-visible, .btn:focus-visible, .chip:focus-visible, .toggle:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800}
+    .brand .logo{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--primary),var(--accent));box-shadow:var(--shadow)}
+    .toggle{border:1px solid var(--border);background:var(--card);border-radius:999px;padding:8px 12px;cursor:pointer}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center;padding:48px 0}
+    .hero h1{font-size:clamp(28px,4vw,48px);line-height:1.15;margin:0 0 12px}
+    .hero p{font-size:18px;color:color-mix(in lab, var(--text), #777 35%)}
+    .cta{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .card.pad{padding:22px}
+
+    /* Sections */
+    section{padding:42px 0}
+    section h2{font-size:28px;margin:0 0 16px}
+    .sub{color:color-mix(in lab, var(--text), #777 35%)}
+
+    /* Projects */
+    .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+    .grid{display:grid;grid-template-columns:repeat(1,1fr);gap:16px}
+    @media(min-width:720px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media(min-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}}
+    .project{display:flex;flex-direction:column;overflow:hidden}
+    .project figure{aspect-ratio:4/3;background:var(--muted);margin:0;overflow:hidden}
+    .project .body{padding:14px 16px}
+    .tags{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+    .tag{font-size:12px;border:1px solid var(--border);padding:4px 8px;border-radius:999px;background:var(--muted)}
+    .project .links{display:flex;gap:10px;margin-top:auto;padding:0 16px 16px}
+
+    /* Skills */
+    .skills{display:grid;grid-template-columns:repeat(1,1fr);gap:12px}
+    @media(min-width:720px){.skills{grid-template-columns:repeat(3,1fr)}}
+    .skill{padding:14px}
+    .level{height:10px;background:var(--muted);border-radius:999px;overflow:hidden}
+    .level > span{display:block;height:100%;background:var(--accent)}
+
+    /* About timeline */
+    .timeline{display:grid;gap:12px}
+    .item{display:flex;gap:12px}
+    .item .dot{width:12px;height:12px;border-radius:999px;background:var(--accent);margin-top:8px}
+    .item .content{flex:1}
+
+    /* Contact */
+    form{display:grid;gap:10px}
+    input, textarea{width:100%;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--card);color:var(--text)}
+    label{font-weight:600}
+    small.hint{color:color-mix(in lab, var(--text), #777 35%)}
+
+    footer{border-top:1px solid var(--border);padding:28px 0;color:color-mix(in lab, var(--text), #777 35%)}
+
+    /* Back to top */
+    #backToTop{position:fixed;right:18px;bottom:22px;display:none}
+
+    /* Motion reduce */
+    @media (prefers-reduced-motion: reduce){.btn{transition:none}}
+  </style>
+</head>
+<body>
+  <header class="site" role="banner">
+    <div class="inner container">
+      <a class="brand" href="#home" aria-label="홈으로">
+        <span class="logo" aria-hidden="true"></span>
+        <span>Your Name</span>
+      </a>
+      <nav aria-label="주요">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="toggle" id="themeToggle" aria-pressed="false" aria-label="다크 모드 전환">🌗</button>
+    </div>
+  </header>
+
+  <main id="home" class="container" role="main">
+    <section class="hero">
+      <div>
+        <h1>문제를 정의하고, 데이터와 웹으로 해결합니다.</h1>
+        <p>프런트엔드 중심의 전천후 웹 제작자 Your Name입니다. 사용자 목표에 맞춘 간결한 UI와 측정 가능한 결과를 만듭니다.</p>
+        <div class="cta">
+          <a class="btn" href="#projects">프로젝트 보기</a>
+          <a class="btn ghost" href="#contact">문의하기</a>
+        </div>
+      </div>
+      <div class="card pad" aria-hidden="true">
+        <strong>최근 성과</strong>
+        <ul>
+          <li>랜딩 리뉴얼로 전환율 +28%</li>
+          <li>이미지 최적화로 LCP 1.9s 달성</li>
+          <li>접근성 점수 Lighthouse 100</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-title">
+      <h2 id="projects-title">Projects</h2>
+      <p class="sub">문제 → 접근 → 결과 중심으로 정리했습니다. 태그로 필터링하세요.</p>
+      <div class="filters" role="toolbar" aria-label="프로젝트 필터">
+        <button class="chip active" data-filter="all" aria-pressed="true">All</button>
+        <button class="chip" data-filter="web">Web</button>
+        <button class="chip" data-filter="ui">UI</button>
+        <button class="chip" data-filter="data">Data</button>
+        <button class="chip" data-filter="tooling">Tooling</button>
+      </div>
+      <div class="grid" id="projectGrid">
+        <!-- Project 1 -->
+        <article class="project card" data-tags="web,ui" aria-labelledby="p1-title">
+          <figure>
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 120'%3E%3Crect width='160' height='120' fill='%23e5e7eb'/%3E%3Ctext x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='14'%3EProject%201%3C/text%3E%3C/svg%3E" loading="lazy" alt="프로젝트 1 썸네일" />
+          </figure>
+          <div class="body">
+            <h3 id="p1-title">반응형 랜딩 리뉴얼</h3>
+            <p class="sub">문제: 이탈률 68%의 노후된 랜딩<br>접근: 정보구조 재설계 + 이미지 최적화<br>결과: 전환율 +28%, LCP 1.9s</p>
+            <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Web</span></div>
+          </div>
+          <div class="links">
+            <a class="btn" href="#" aria-label="프로젝트 1 데모 열기">Demo</a>
+            <a class="btn ghost" href="#" aria-label="프로젝트 1 코드 열기">Code</a>
+          </div>
+        </article>
+        <!-- Project 2 -->
+        <article class="project card" data-tags="data,web" aria-labelledby="p2-title">
+          <figure>
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 120'%3E%3Crect width='160' height='120' fill='%23e5e7eb'/%3E%3Ctext x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='14'%3EProject%202%3C/text%3E%3C/svg%3E" loading="lazy" alt="프로젝트 2 썸네일" />
+          </figure>
+          <div class="body">
+            <h3 id="p2-title">포트폴리오 분석 대시보드</h3>
+            <p class="sub">문제: 프로젝트 성과 측정 곤란<br>접근: 간단한 이벤트 트래킹 + 대시보드<br>결과: 클릭률/체류시간 추적, 콘텐츠 개선</p>
+            <div class="tags"><span class="tag">HTML</span><span class="tag">JS</span><span class="tag">Data</span></div>
+          </div>
+          <div class="links">
+            <a class="btn" href="#">Demo</a>
+            <a class="btn ghost" href="#">Code</a>
+          </div>
+        </article>
+        <!-- Project 3 -->
+        <article class="project card" data-tags="ui,tooling" aria-labelledby="p3-title">
+          <figure>
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 120'%3E%3Crect width='160' height='120' fill='%23e5e7eb'/%3E%3Ctext x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='14'%3EProject%203%3C/text%3E%3C/svg%3E" loading="lazy" alt="프로젝트 3 썸네일" />
+          </figure>
+          <div class="body">
+            <h3 id="p3-title">디자인 시스템 샘플</h3>
+            <p class="sub">문제: 일관성 없는 UI 컴포넌트<br>접근: 토큰/컴포넌트/가이드 정의<br>결과: 개발 속도 +30%, 유지보수 용이</p>
+            <div class="tags"><span class="tag">UI</span><span class="tag">Design</span><span class="tag">Tooling</span></div>
+          </div>
+          <div class="links">
+            <a class="btn" href="#">Demo</a>
+            <a class="btn ghost" href="#">Code</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" aria-labelledby="about-title">
+      <h2 id="about-title">About</h2>
+      <div class="card pad">
+        <p><strong>Your Name</strong> — 사용자의 문제를 빠르게 파악하고, 측정 가능한 결과로 연결하는 웹 제작자입니다. 협업과 문서화를 중시하며, 접근성과 성능을 기본값으로 둡니다.</p>
+        <div class="timeline" aria-label="경력 타임라인">
+          <div class="item">
+            <span class="dot" aria-hidden="true"></span>
+            <div class="content">
+              <strong>2024–현재</strong> 프리랜스/사이드 프로젝트 다수 수행
+            </div>
+          </div>
+          <div class="item">
+            <span class="dot" aria-hidden="true"></span>
+            <div class="content">
+              <strong>2022–2024</strong> 스타트업 FE 개발자 — 랜딩/대시보드/디자인 시스템
+            </div>
+          </div>
+        </div>
+        <p><a class="btn ghost" href="./resume.pdf" download rel="noopener">이력서 다운로드</a></p>
+      </div>
+    </section>
+
+    <section id="skills" aria-labelledby="skills-title">
+      <h2 id="skills-title">Skills</h2>
+      <div class="skills">
+        <div class="card skill">
+          <strong>HTML/CSS</strong>
+          <div class="level" aria-label="숙련도 90%"><span style="width:90%"></span></div>
+          <small class="hint">시맨틱 마크업, 반응형, 접근성</small>
+        </div>
+        <div class="card skill">
+          <strong>JavaScript</strong>
+          <div class="level" aria-label="숙련도 80%"><span style="width:80%"></span></div>
+          <small class="hint">상호작용, 상태, 경량 모듈</small>
+        </div>
+        <div class="card skill">
+          <strong>Performance/SEO</strong>
+          <div class="level" aria-label="숙련도 75%"><span style="width:75%"></span></div>
+          <small class="hint">Lighthouse 90+, 구조화 데이터</small>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      <div class="card pad">
+        <form action="https://formspree.io/f/your_form_id" method="POST">
+          <div>
+            <label for="name">이름</label>
+            <input id="name" name="name" type="text" placeholder="홍길동" required />
+          </div>
+          <div>
+            <label for="email">이메일</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required />
+          </div>
+          <div>
+            <label for="message">메시지</label>
+            <textarea id="message" name="message" rows="5" placeholder="프로젝트/협업 문의 내용을 적어주세요." required></textarea>
+          </div>
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true"> <!-- honeypot -->
+          <button type="submit" class="btn">보내기</button>
+          <p class="sub" aria-live="polite">메일로 바로 보내고 싶다면 <a href="mailto:you@domain.com?subject=Portfolio%20Inquiry">you@domain.com</a></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container" role="contentinfo">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+      <small>© <span id="y"></span> Your Name. All rights reserved.</small>
+      <div style="display:flex;gap:12px">
+        <a href="#" aria-label="GitHub">GitHub</a>
+        <a href="#" aria-label="LinkedIn">LinkedIn</a>
+        <a href="#" aria-label="Blog">Blog</a>
+      </div>
+    </div>
+  </footer>
+
+  <a id="backToTop" class="btn" href="#home" aria-label="맨 위로 이동">▲ Top</a>
+
+  <!-- 구조화 데이터: 본인 정보로 교체하세요 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Your Name",
+    "url": "https://username.github.io/",
+    "image": "https://username.github.io/profile.jpg",
+    "sameAs": ["https://github.com/username", "https://www.linkedin.com/in/username"],
+    "jobTitle": "Frontend Developer",
+    "worksFor": {"@type": "Organization", "name": "Freelance"}
+  }
+  </script>
+
+  <script>
+    // ===== Theme (Light/Dark) =====
+    const root = document.documentElement;
+    const toggle = document.getElementById('themeToggle');
+    const saved = localStorage.getItem('theme');
+    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initTheme = saved || (systemDark ? 'dark' : 'light');
+    root.setAttribute('data-theme', initTheme);
+    toggle.setAttribute('aria-pressed', initTheme === 'dark');
+    toggle.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      toggle.setAttribute('aria-pressed', next === 'dark');
+    });
+
+    // ===== Projects Filter =====
+    const chips = document.querySelectorAll('.filters .chip');
+    const cards = document.querySelectorAll('.project');
+    chips.forEach(ch => ch.addEventListener('click', () => {
+      chips.forEach(c=>{c.classList.remove('active');c.setAttribute('aria-pressed','false')});
+      ch.classList.add('active'); ch.setAttribute('aria-pressed','true');
+      const f = ch.dataset.filter;
+      cards.forEach(card => {
+        const tags = card.dataset.tags.split(',');
+        const show = (f==='all') || tags.includes(f);
+        card.style.display = show ? 'flex' : 'none';
+      });
+    }));
+
+    // ===== Back to Top Visibility =====
+    const topBtn = document.getElementById('backToTop');
+    const onScroll = () => { topBtn.style.display = window.scrollY > 600 ? 'inline-block' : 'none'; };
+    document.addEventListener('scroll', onScroll, {passive:true});
+
+    // ===== Year in footer =====
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Analytics (원하면 사용)
+  <script defer data-domain="username.github.io" src="https://plausible.io/js/script.js"></script>
+  -->
+</body>
+</html>
